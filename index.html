@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hab Productions | Film, Photo & FPV</title>
+
+  <style>
+    :root {
+      --black: #111111;
+      --cream: #F5F1E8;
+      --orange: #E84424;
+      --gray: #45413A;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      padding: 25px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .logo span, .accent { color: var(--orange); }
+
+    nav { display: flex; gap: 25px; }
+
+    nav a {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover { color: var(--orange); }
+
+    section { padding: 100px 6%; }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(55px, 9vw, 130px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      margin: 30px 0;
+    }
+
+    h2 {
+      font-size: clamp(36px, 6vw, 75px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+
+    p { line-height: 1.7; }
+
+    .hero p {
+      max-width: 530px;
+      font-size: 18px;
+      color: #CBC7C0;
+    }
+
+    .button {
+      display: inline-block;
+      width: fit-content;
+      background: var(--orange);
+      color: white;
+      padding: 17px 26px;
+      margin-top: 25px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .work { background: #1B1B1B; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .placeholder {
+      aspect-ratio: 16 / 9;
+      background: var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .project h3 { margin-bottom: 5px; }
+
+    .project p, .service p { color: #BBB5AD; }
+
+    .service {
+      border-top: 1px solid var(--gray);
+      padding: 25px 0;
+    }
+
+    .about {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .about p {
+      max-width: 750px;
+      font-size: 19px;
+    }
+
+    .contact { text-align: center; }
+
+    footer {
+      border-top: 1px solid var(--gray);
+      padding: 30px 6%;
+      color: #AAA49D;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      header { flex-wrap: wrap; gap: 20px; }
+      nav { flex-wrap: wrap; gap: 12px; }
+      section { padding: 65px 6%; }
+      h1 { letter-spacing: -2px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#" class="logo">HAB<span>.</span></a>
+    <nav>
+      <a href="#work">WORK</a>
+      <a href="#services">SERVICES</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">
+        San Luis Obispo, California
+      </div>
+
+      <h1>BUILT TO<br>CAPTURE<br>
+        <span class="accent">MOTION.</span>
+      </h1>
+
+      <p>
+        Independent film production, FPV cinematography,
+        and photography. Creating visuals that bring
+        stories, spaces, and experiences to life.
+      </p>
+
+      <a class="button" href="#work">EXPLORE THE WORK ↗</a>
+    </section>
+
+    <section class="work" id="work">
+      <div class="eyebrow">01 / Portfolio</div>
+      <h2>Selected Work</h2>
+
+      <div class="grid">
+        <article class="project">
+          <div class="placeholder">VIDEO COMING SOON</div>
+          <h3>CAL POLY MOUNTAIN BIKING</h3>
+          <p>Action Sports / FPV / Promotional Film</p>
+        </article>
+
+        <article class="project">
+          <div class="placeholder">VIDEO COMING SOON</div>
+          <h3>THE PAD SLO</h3>
+          <p>Climbing / Commercial / Promotional Film</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="eyebrow">02 / Capabilities</div>
+      <h2>What I Do</h2>
+
+      <div class="grid">
+        <div class="service">
+          <h3>01 / ACTION & FPV</h3>
+          <p>Mountain biking, motocross, motorsports,
+             climbing and high-energy cinematography.</p>
+        </div>
+
+        <div class="service">
+          <h3>02 / COMMERCIAL</h3>
+          <p>Promotional videos, brand storytelling,
+             and content for local businesses.</p>
+        </div>
+
+        <div class="service">
+          <h3>03 / PHOTOGRAPHY</h3>
+          <p>Graduation portraits, lifestyle photography,
+             and creative photo sessions.</p>
+        </div>
+
+        <div class="service">
+          <h3>04 / REAL ESTATE</h3>
+          <p>Property photography, aerial perspectives,
+             and cinematic property walkthroughs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="eyebrow">03 / Behind the Camera</div>
+      <h2>The Person Behind Hab.</h2>
+
+      <p>
+        I'm Griffin, the filmmaker and photographer behind
+        Hab Productions, based in San Luis Obispo, California.
+      </p>
+
+      <p>
+        My background in FPV drone racing and engineering
+        gives me a unique approach to capturing movement
+        and perspective. From fast-paced action sports to
+        commercial projects and photography, I love
+        bringing creative ideas to life.
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="eyebrow">04 / Let's Create</div>
+      <h2>Have a Project in Mind?</h2>
+
+      <p>
+        Available for film and photography projects
+        in San Luis Obispo and beyond.
+      </p>
+
+      <!-- Replace this with your business email -->
+      <a class="button" href="mailto:YOUR-EMAIL@example.com">
+        GET IN TOUCH ↗
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 HAB PRODUCTIONS — SAN LUIS OBISPO, CA
+  </footer>
+
+</body>
+</html>
