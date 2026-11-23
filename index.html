@@ -109,14 +109,18 @@
       gap: 25px;
     }
 
-    .placeholder {
+    .project video {
+      display: block;
+      width: 100%;
       aspect-ratio: 16 / 9;
-      background: var(--gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      letter-spacing: 2px;
+      background: #080808;
+      object-fit: contain;
+      border: 1px solid var(--gray);
+    }
+
+    .project video:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 5px;
     }
 
     .project h3 { margin-bottom: 5px; }
@@ -140,11 +144,69 @@
 
     .contact { text-align: center; }
 
+    .contact-intro { max-width: 620px; margin: 0 auto; }
+
+    .contact-details { margin: 26px 0 0; }
+
+    .contact-details strong { display: block; }
+
+    .contact-details a { text-decoration: underline; text-underline-offset: 4px; }
+
+    .contact-instagram { margin: 12px 0 0; font-size: 14px; }
+
+    .contact-instagram a, footer a { text-decoration: underline; text-underline-offset: 4px; }
+
+    .contact-instagram a:hover, footer a:hover { color: var(--orange); }
+
+    .inquiry-form {
+      max-width: 760px;
+      margin: 45px auto 0;
+      padding: 32px;
+      text-align: left;
+      background: #1B1B1B;
+      border: 1px solid var(--gray);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+    .form-field { margin-bottom: 24px; }
+
+    .form-field label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: bold; }
+
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 14px;
+      border: 1px solid #777068;
+      border-radius: 0;
+      background: var(--black);
+      color: var(--cream);
+      font: inherit;
+      font-size: 16px;
+      color-scheme: dark;
+    }
+
+    .form-field textarea { min-height: 145px; resize: vertical; line-height: 1.5; }
+
+    .form-field :is(input, select, textarea):focus-visible,
+    .inquiry-form button:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .inquiry-form .button { border: 0; margin-top: 0; cursor: pointer; font-family: inherit; }
+
+    .form-note { color: #CBC7C0; font-size: 14px; margin: 18px 0 0; }
+
     footer {
       border-top: 1px solid var(--gray);
       padding: 30px 6%;
       color: #AAA49D;
       font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
     }
 
     @media (max-width: 700px) {
@@ -153,6 +215,8 @@
       section { padding: 65px 6%; }
       h1 { letter-spacing: -2px; }
       .grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .inquiry-form { padding: 22px; }
     }
   </style>
 </head>
@@ -194,15 +258,25 @@
 
       <div class="grid">
         <article class="project">
-          <div class="placeholder">VIDEO COMING SOON</div>
-          <h3>CAL POLY MOUNTAIN BIKING</h3>
-          <p>Action Sports / FPV / Promotional Film</p>
+          <video controls autoplay muted loop playsinline preload="metadata"
+                 poster="assets/cal-poly-mountain-biking.jpg"
+                 aria-labelledby="mountain-biking-title">
+            <source src="assets/cal-poly-mountain-biking.mp4" type="video/mp4">
+            <p><a href="assets/cal-poly-mountain-biking.mp4">Watch the Cal Poly Mountain Biking film</a>.</p>
+          </video>
+          <h3 id="mountain-biking-title">CAL POLY MOUNTAIN BIKING</h3>
+          <p>Action Sports / FPV / Promotional Film · 0:47</p>
         </article>
 
         <article class="project">
-          <div class="placeholder">VIDEO COMING SOON</div>
-          <h3>THE PAD SLO</h3>
-          <p>Climbing / Commercial / Promotional Film</p>
+          <video controls autoplay muted loop playsinline preload="metadata"
+                 poster="assets/the-pad-slo.jpg"
+                 aria-labelledby="pad-title">
+            <source src="assets/the-pad-slo.mp4" type="video/mp4">
+            <p><a href="assets/the-pad-slo.mp4">Watch The Pad SLO film</a>.</p>
+          </video>
+          <h3 id="pad-title">THE PAD SLO</h3>
+          <p>Climbing / Commercial / Promotional Film · 0:42</p>
         </article>
       </div>
     </section>
@@ -243,7 +317,7 @@
       <h2>The Person Behind Hab.</h2>
 
       <p>
-        I'm Griffin, the filmmaker and photographer behind
+        I'm Griffin Habermehl, the filmmaker and photographer behind
         Hab Productions, based in San Luis Obispo, California.
       </p>
 
@@ -260,21 +334,119 @@
       <div class="eyebrow">04 / Let's Create</div>
       <h2>Have a Project in Mind?</h2>
 
-      <p>
-        Available for film and photography projects
-        in San Luis Obispo and beyond.
+      <p class="contact-intro">
+        Tell me what you're planning. Available for film and photography
+        projects in San Luis Obispo and beyond.
       </p>
 
-      <!-- Replace this with your business email -->
-      <a class="button" href="mailto:YOUR-EMAIL@example.com">
-        GET IN TOUCH ↗
-      </a>
+      <p class="contact-details">
+        <strong>Griffin Habermehl</strong>
+        <a href="mailto:griffinhabermehl@gmail.com">griffinhabermehl@gmail.com</a>
+      </p>
+      <p class="contact-instagram">
+        Latest work on Instagram:
+        <a href="https://www.instagram.com/griffin_habermehl/" target="_blank" rel="noopener noreferrer">@griffin_habermehl ↗</a>
+      </p>
+
+      <form class="inquiry-form" id="inquiry-form"
+            action="mailto:griffinhabermehl@gmail.com" method="post" enctype="text/plain"
+            aria-label="Start a project" aria-describedby="inquiry-note">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="inquiry-name">Your name</label>
+            <input id="inquiry-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+          </div>
+          <div class="form-field">
+            <label for="inquiry-email">Your email</label>
+            <input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="inquiry-type">Project type</label>
+          <select id="inquiry-type" name="project-type" required>
+            <option value="" disabled selected>Choose a project type</option>
+            <option>Business / Promotional Film</option>
+            <option>FPV Flythrough</option>
+            <option>Action Sports</option>
+            <option>Photography</option>
+            <option>Real Estate</option>
+            <option>Something Else / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="inquiry-description">A short description</label>
+          <textarea id="inquiry-description" name="description" rows="5" maxlength="2000"
+                    placeholder="What would you like to create? Include a location or date if you have one." required></textarea>
+        </div>
+        <button class="button" type="submit">OPEN EMAIL ↗</button>
+        <p class="form-note" id="inquiry-note">
+          Opens your email app with your project details. Review the message and send it from there.
+          You can also email me directly using the address above.
+        </p>
+      </form>
     </section>
   </main>
 
   <footer>
-    © 2026 HAB PRODUCTIONS — SAN LUIS OBISPO, CA
+    <span>© 2026 HAB PRODUCTIONS — SAN LUIS OBISPO, CA</span>
+    <a href="https://www.instagram.com/griffin_habermehl/" target="_blank" rel="noopener noreferrer">INSTAGRAM · @griffin_habermehl ↗</a>
   </footer>
 
+  <script>
+    const films = document.querySelectorAll('.project video');
+    const visibleFilms = new Set();
+    const playFilm = film => {
+      if (!document.hidden) film.play().catch(() => {});
+    };
+
+    // Muted films can play together; stop them when they leave the screen.
+    films.forEach(film => film.pause());
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(({ target: film, intersectionRatio }) => {
+        if (intersectionRatio >= 0.25) {
+          visibleFilms.add(film);
+          playFilm(film);
+        } else {
+          visibleFilms.delete(film);
+          film.pause();
+        }
+      });
+    }, { threshold: [0, 0.25] });
+    films.forEach(film => {
+      observer.observe(film);
+      film.addEventListener('volumechange', () => {
+        if (!film.muted && film.volume > 0) {
+          films.forEach(other => { if (other !== film) other.muted = true; });
+        }
+      });
+    });
+    document.addEventListener('visibilitychange', () => {
+      films.forEach(film => {
+        if (document.hidden) film.pause();
+        else if (visibleFilms.has(film)) playFilm(film);
+      });
+    });
+
+    const inquiryForm = document.getElementById('inquiry-form');
+    inquiryForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('inquiry-name');
+      const description = document.getElementById('inquiry-description');
+      name.value = name.value.trim();
+      description.value = description.value.trim();
+      if (!inquiryForm.reportValidity()) return;
+      const email = document.getElementById('inquiry-email').value.trim();
+      const projectType = document.getElementById('inquiry-type').value;
+      const subject = `Hab Productions inquiry: ${projectType}`;
+      const body = [
+        'Hi Griffin,', '',
+        `Name: ${name.value}`,
+        `Email: ${email}`,
+        `Project type: ${projectType}`, '',
+        description.value
+      ].join('\r\n');
+      window.location.href = `mailto:griffinhabermehl@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
 </body>
 </html>
