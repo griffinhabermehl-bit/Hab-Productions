@@ -234,6 +234,52 @@
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .inquiry-form { padding: 22px; }
     }
+
+    .gallery { background: #191919; }
+    .gallery-intro { max-width: 620px; color: #CBC7C0; font-size: 18px; }
+    .gallery-filters { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0; }
+    .gallery-filters button, .gallery-dialog button {
+      font: inherit; font-size: 14px; cursor: pointer; min-height: 44px;
+      padding: 10px 18px; border: 1px solid #777068; color: var(--cream); background: transparent;
+    }
+    .gallery-filters button[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 24px; }
+    .gallery-item { margin: 0; min-width: 0; }
+    .gallery-item[hidden] { display: none; }
+    .gallery-item a { display: block; }
+    .gallery-item img, .gallery-item video {
+      display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain;
+      background: #090909; border: 1px solid var(--gray);
+    }
+    .gallery-item img { transition: border-color .2s; }
+    .gallery-item a:hover img { border-color: var(--orange); }
+    .gallery-item figcaption { margin-top: 12px; line-height: 1.5; }
+    .gallery-item figcaption strong { display: block; font-size: 16px; font-weight: 500; }
+    .gallery-item figcaption span { display: block; color: #BBB5AD; font-size: 14px; margin-top: 3px; }
+    .gallery :is(a, button):focus-visible, .gallery-dialog button:focus-visible {
+      outline: 2px solid var(--orange); outline-offset: 5px;
+    }
+    .gallery-dialog {
+      width: min(1200px, 94vw); max-height: 94vh; padding: 18px;
+      background: #111; color: var(--cream); border: 1px solid #777068;
+    }
+    .gallery-dialog::backdrop { background: rgb(0 0 0 / .9); }
+    .gallery-dialog-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .gallery-dialog-toolbar p { margin: 0; font-size: 14px; color: #CBC7C0; }
+    .gallery-dialog img { display: block; width: 100%; height: min(68vh, 800px); object-fit: contain; }
+    .gallery-dialog-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+    .gallery-dialog-bottom p { margin: 0; }
+    .gallery-dialog-controls { display: flex; gap: 10px; }
+    @media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 700px) {
+      .gallery-grid { grid-template-columns: 1fr; gap: 28px; }
+      .gallery-dialog { padding: 12px; }
+      .gallery-dialog img { height: 60vh; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .gallery-item img { transition: none; }
+    }
   </style>
 </head>
 
@@ -243,6 +289,7 @@
     <a href="#" class="logo">HAB<span>.</span></a>
     <nav>
       <a href="#work">WORK</a>
+      <a href="#gallery">GALLERY</a>
       <a href="#services">SERVICES</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
@@ -355,8 +402,186 @@
       </div>
     </section>
 
+    <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+      <div class="eyebrow">04 / Gallery</div>
+      <h2 id="gallery-heading">Out in the World.</h2>
+      <p class="gallery-intro">Coastal mornings, mountain light, and moments in between.
+        A collection of photographs and short films from my travels.</p>
+      <div class="gallery-filters" role="group" aria-label="Filter gallery">
+        <button type="button" data-gallery-filter="all" aria-pressed="true">All work</button>
+        <button type="button" data-gallery-filter="photo" aria-pressed="false">Photography</button>
+        <button type="button" data-gallery-filter="video" aria-pressed="false">Short films</button>
+      </div>
+      <p id="gallery-count" class="gallery-count" aria-live="polite">17 works · 12 photographs · 5 short films</p>
+      <div class="gallery-grid">
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/big-sur-coast-2400.webp" data-gallery-photo aria-label="Enlarge The Coast Road">
+            <img src="assets/gallery/big-sur-coast-720.webp" srcset="assets/gallery/big-sur-coast-720.webp 720w, assets/gallery/big-sur-coast-1440.webp 1440w, assets/gallery/big-sur-coast-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="A winding road along the green Big Sur coastline">
+          </a>
+          <figcaption><strong>The Coast Road</strong><span>Big Sur · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/bvi-sunset-2400.webp" data-gallery-photo aria-label="Enlarge Island Evening">
+            <img src="assets/gallery/bvi-sunset-720.webp" srcset="assets/gallery/bvi-sunset-720.webp 720w, assets/gallery/bvi-sunset-1440.webp 1440w, assets/gallery/bvi-sunset-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="Hillside homes above a rocky bay beneath a pink sunset">
+          </a>
+          <figcaption><strong>Island Evening</strong><span>British Virgin Islands · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/yosemite-evening-2400.webp" data-gallery-photo aria-label="Enlarge Last Light on Granite">
+            <img src="assets/gallery/yosemite-evening-720.webp" srcset="assets/gallery/yosemite-evening-720.webp 720w, assets/gallery/yosemite-evening-1440.webp 1440w, assets/gallery/yosemite-evening-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="480" loading="lazy" decoding="async"
+                 alt="Warm evening light grazing the granite cliffs of Yosemite">
+          </a>
+          <figcaption><strong>Last Light on Granite</strong><span>Yosemite · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/bouldering-2400.webp" data-gallery-photo aria-label="Enlarge An Afternoon on the Rock">
+            <img src="assets/gallery/bouldering-720.webp" srcset="assets/gallery/bouldering-720.webp 720w, assets/gallery/bouldering-1440.webp 1440w, assets/gallery/bouldering-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="480" loading="lazy" decoding="async"
+                 alt="Climbers beside a large boulder beneath a cloud-filled sky">
+          </a>
+          <figcaption><strong>An Afternoon on the Rock</strong><span>Climbing · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/montana-balloon-2400.webp" data-gallery-photo aria-label="Enlarge Above the Winter Valley">
+            <img src="assets/gallery/montana-balloon-720.webp" srcset="assets/gallery/montana-balloon-720.webp 720w, assets/gallery/montana-balloon-1440.webp 1440w, assets/gallery/montana-balloon-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="A colorful hot air balloon above snowy Montana mountains">
+          </a>
+          <figcaption><strong>Above the Winter Valley</strong><span>Montana · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/yosemite-valley-2400.webp" data-gallery-photo aria-label="Enlarge Into the Valley">
+            <img src="assets/gallery/yosemite-valley-720.webp" srcset="assets/gallery/yosemite-valley-720.webp 720w, assets/gallery/yosemite-valley-1440.webp 1440w, assets/gallery/yosemite-valley-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="480" loading="lazy" decoding="async"
+                 alt="Yosemite Valley with granite cliffs beneath a blue sky">
+          </a>
+          <figcaption><strong>Into the Valley</strong><span>Yosemite · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/big-sur-fog-2400.webp" data-gallery-photo aria-label="Enlarge Where the Fog Meets the Coast">
+            <img src="assets/gallery/big-sur-fog-720.webp" srcset="assets/gallery/big-sur-fog-720.webp 720w, assets/gallery/big-sur-fog-1440.webp 1440w, assets/gallery/big-sur-fog-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="Fog drifting over green coastal hills and the Pacific Ocean">
+          </a>
+          <figcaption><strong>Where the Fog Meets the Coast</strong><span>Big Sur · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/montana-river-2400.webp" data-gallery-photo aria-label="Enlarge Winter from Above">
+            <img src="assets/gallery/montana-river-720.webp" srcset="assets/gallery/montana-river-720.webp 720w, assets/gallery/montana-river-1440.webp 1440w, assets/gallery/montana-river-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="An aerial view of ice and snow surrounding a winter river">
+          </a>
+          <figcaption><strong>Winter from Above</strong><span>Montana · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/north-dome-2400.webp" data-gallery-photo aria-label="Enlarge A Moment at North Dome">
+            <img src="assets/gallery/north-dome-720.webp" srcset="assets/gallery/north-dome-720.webp 480w, assets/gallery/north-dome-1440.webp 960w, assets/gallery/north-dome-2400.webp 1600w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="480" height="720" loading="lazy" decoding="async"
+                 alt="A smiling hiker with Yosemite granite cliffs behind her">
+          </a>
+          <figcaption><strong>A Moment at North Dome</strong><span>Yosemite · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/montana-winter-2400.webp" data-gallery-photo aria-label="Enlarge Along the Winter River">
+            <img src="assets/gallery/montana-winter-720.webp" srcset="assets/gallery/montana-winter-720.webp 720w, assets/gallery/montana-winter-1440.webp 1440w, assets/gallery/montana-winter-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="Snow-covered rocks and evergreen trees along a river">
+          </a>
+          <figcaption><strong>Along the Winter River</strong><span>Montana · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/big-sur-camp-2400.webp" data-gallery-photo aria-label="Enlarge Camp by the Pacific">
+            <img src="assets/gallery/big-sur-camp-720.webp" srcset="assets/gallery/big-sur-camp-720.webp 720w, assets/gallery/big-sur-camp-1440.webp 1440w, assets/gallery/big-sur-camp-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="An overhead view of a green coastal campground beside the ocean">
+          </a>
+          <figcaption><strong>Camp by the Pacific</strong><span>Big Sur · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="photo">
+          <a href="assets/gallery/montana-trees-2400.webp" data-gallery-photo aria-label="Enlarge A Canopy in Winter">
+            <img src="assets/gallery/montana-trees-720.webp" srcset="assets/gallery/montana-trees-720.webp 720w, assets/gallery/montana-trees-1440.webp 1440w, assets/gallery/montana-trees-2400.webp 2400w"
+                 sizes="(max-width: 700px) 88vw, (max-width: 1000px) 43vw, 28vw"
+                 width="720" height="405" loading="lazy" decoding="async"
+                 alt="An aerial view of snow-dusted evergreen trees">
+          </a>
+          <figcaption><strong>A Canopy in Winter</strong><span>Montana · Photograph</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="video">
+          <video controls playsinline preload="none" poster="assets/gallery/fireworks-after-dark-poster.webp" width="1920" height="1080"
+                 aria-label="Fireworks After Dark">
+            <source src="assets/gallery/fireworks-after-dark.mp4" type="video/mp4">
+            <p><a href="assets/gallery/fireworks-after-dark.mp4">Watch Fireworks After Dark</a></p>
+          </video>
+          <figcaption><strong>Fireworks After Dark</strong><span>Aerial film · 11 seconds</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="video">
+          <video controls playsinline preload="none" poster="assets/gallery/paddle-into-sunset-poster.webp" width="1920" height="1080"
+                 aria-label="Paddle into Sunset">
+            <source src="assets/gallery/paddle-into-sunset.mp4" type="video/mp4">
+            <p><a href="assets/gallery/paddle-into-sunset.mp4">Watch Paddle into Sunset</a></p>
+          </video>
+          <figcaption><strong>Paddle into Sunset</strong><span>British Virgin Islands · 9 seconds</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="video">
+          <video controls playsinline preload="none" poster="assets/gallery/mountain-tee-poster.webp" width="1920" height="1080"
+                 aria-label="The Mountain Tee">
+            <source src="assets/gallery/mountain-tee.mp4" type="video/mp4">
+            <p><a href="assets/gallery/mountain-tee.mp4">Watch The Mountain Tee</a></p>
+          </video>
+          <figcaption><strong>The Mountain Tee</strong><span>Golf film · 11 seconds</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="video">
+          <video controls playsinline preload="none" poster="assets/gallery/on-the-green-poster.webp" width="1920" height="1080"
+                 aria-label="On the Green">
+            <source src="assets/gallery/on-the-green.mp4" type="video/mp4">
+            <p><a href="assets/gallery/on-the-green.mp4">Watch On the Green</a></p>
+          </video>
+          <figcaption><strong>On the Green</strong><span>Golf film · 6 seconds</span></figcaption>
+        </figure>
+        <figure class="gallery-item" data-kind="video">
+          <video controls playsinline preload="none" poster="assets/gallery/island-afternoon-poster.webp" width="1920" height="1080"
+                 aria-label="An Island Afternoon">
+            <source src="assets/gallery/island-afternoon.mp4" type="video/mp4">
+            <p><a href="assets/gallery/island-afternoon.mp4">Watch An Island Afternoon</a></p>
+          </video>
+          <figcaption><strong>An Island Afternoon</strong><span>Lifestyle film · 7 seconds</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <dialog class="gallery-dialog" id="gallery-dialog" aria-label="Photograph viewer">
+      <div class="gallery-dialog-toolbar">
+        <p id="gallery-position" aria-live="polite"></p>
+        <button type="button" id="gallery-close" autofocus>Close</button>
+      </div>
+      <img id="gallery-full-image" alt="">
+      <div class="gallery-dialog-bottom">
+        <p id="gallery-caption" aria-live="polite"></p>
+        <div class="gallery-dialog-controls">
+          <button type="button" id="gallery-previous">Previous</button>
+          <button type="button" id="gallery-next">Next</button>
+        </div>
+      </div>
+    </dialog>
+
     <section class="contact" id="contact">
-      <div class="eyebrow">04 / Let's Create</div>
+      <div class="eyebrow">05 / Let's Create</div>
       <h2>Have a Project in Mind?</h2>
 
       <p class="contact-intro">
@@ -421,7 +646,7 @@
     const films = document.querySelectorAll('.project video');
     const visibleFilms = new Set();
     const playFilm = film => {
-      if (!document.hidden) film.play().catch(() => {});
+      if (!document.hidden && !document.getElementById('gallery-dialog')?.open) film.play().catch(() => {});
     };
 
     // Muted films can play together; stop them when they leave the screen.
@@ -473,5 +698,6 @@
       window.location.href = `mailto:griffinhabermehl@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   </script>
+  <script src="assets/gallery.js" defer></script>
 </body>
 </html>
