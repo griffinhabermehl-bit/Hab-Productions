@@ -137,6 +137,20 @@
       color: var(--black);
     }
 
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      align-items: center;
+      gap: clamp(32px, 6vw, 80px);
+    }
+
+    .about-portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--gray);
+    }
+
     .about p {
       max-width: 750px;
       font-size: 19px;
@@ -215,6 +229,8 @@
       section { padding: 65px 6%; }
       h1 { letter-spacing: -2px; }
       .grid { grid-template-columns: 1fr; }
+      .about-layout { grid-template-columns: 1fr; }
+      .about-portrait { max-width: 320px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .inquiry-form { padding: 22px; }
     }
@@ -313,23 +329,30 @@
     </section>
 
     <section class="about" id="about">
-      <div class="eyebrow">03 / Behind the Camera</div>
-      <h2>The Person Behind Hab.</h2>
+      <div class="about-layout">
+        <div class="about-copy">
+          <div class="eyebrow">03 / Behind the Camera</div>
+          <h2>The Person Behind Hab.</h2>
 
-      <p>
-        I'm Griffin Habermehl, the filmmaker and photographer behind
-        Hab Productions, based in San Luis Obispo, California.
-        I'm also a current student at Cal Poly San Luis Obispo.
-      </p>
+          <p>
+            I'm Griffin Habermehl, the filmmaker and photographer behind
+            Hab Productions, based in San Luis Obispo, California.
+            I'm also a current student at Cal Poly San Luis Obispo.
+          </p>
 
-      <p>
-        I got my start in FPV drone racing and engineering in middle
-        school, shaping the way I capture movement and perspective.
-        From fast-paced action sports to commercial projects and
-        photography, I love bringing creative ideas to life.
-        When I'm not behind the camera, you'll find me surfing
-        or rock climbing.
-      </p>
+          <p>
+            I got my start in FPV drone racing and engineering in middle
+            school, shaping the way I capture movement and perspective.
+            From fast-paced action sports to commercial projects and
+            photography, I love bringing creative ideas to life.
+            When I'm not behind the camera, you'll find me surfing
+            or rock climbing.
+          </p>
+        </div>
+        <img class="about-portrait" src="assets/griffin-habermehl.jpeg"
+             alt="Griffin Habermehl outdoors in front of the mountains"
+             width="359" height="598" loading="lazy" decoding="async">
+      </div>
     </section>
 
     <section class="contact" id="contact">
