@@ -10,8 +10,8 @@
       item.hidden = kind !== 'all' && item.dataset.kind !== kind;
       if (item.hidden) item.querySelector('video')?.pause();
     });
-    count.textContent = kind === 'all' ? '17 works · 12 photographs · 5 short films' :
-      kind === 'photo' ? '12 photographs · Select a photo to enlarge' : '5 short films · Select play to watch';
+    count.textContent = kind === 'all' ? '18 works · 13 photographs · 5 short films' :
+      kind === 'photo' ? '13 photographs · Select a photo to enlarge' : '5 short films · Select play to watch';
   }));
   document.querySelectorAll('.gallery-item video').forEach(video => {
     video.addEventListener('play', () => videos.forEach(other => { if (other !== video) other.pause(); }));
